@@ -1,0 +1,171 @@
+::selection {
+    background: var(--a);
+    color: #fff
+}
+
+html {
+    scrollbar-color: var(--a) var(--bg)
+}
+
+[data-accent=cyan] {
+    --a: #08f7fe;
+    --b: #ff2e63
+}
+
+[data-accent=violet] {
+    --a: #b46bff;
+    --b: #ffd23f
+}
+
+[data-theme=light][data-accent=cyan] {
+    --a: #006f82;
+    --b: #cf0f3d
+}
+
+[data-theme=light][data-accent=violet] {
+    --a: #6a2fd0;
+    --b: #a87400
+}
+
+.hero {
+    position: relative
+}
+
+.hud {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: min(38vw, 380px);
+    translate: 0 -50%;
+    opacity: .5;
+    pointer-events: none
+}
+
+.hud circle {
+    transform-origin: 100px 100px;
+    animation: spin 30s linear infinite
+}
+
+.hud .r2 {
+    animation-duration: 14s;
+    animation-direction: reverse
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.chips li {
+    transition: .2s
+}
+
+.chips li:hover {
+    background: var(--b);
+    color: #000;
+    box-shadow: 0 0 14px var(--b);
+    transform: translateY(-3px)
+}
+
+#cur {
+    position: fixed;
+    left: -18px;
+    top: -18px;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--a);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 400;
+    box-shadow: 0 0 14px var(--a);
+    transition: scale .2s, background .2s
+}
+
+#cur.big {
+    scale: 1.8;
+    background: rgba(255, 46, 99, .15)
+}
+
+#wipe {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+    background: linear-gradient(110deg, var(--a), var(--b));
+    animation: wout .55s cubic-bezier(.7, 0, .3, 1) forwards
+}
+
+#wipe.go {
+    animation: none;
+    transition: transform .38s cubic-bezier(.7, 0, .3, 1);
+    transform: none
+}
+
+@keyframes wout {
+    from {
+        transform: none
+    }
+
+    to {
+        transform: translateX(101%)
+    }
+}
+
+#up {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 90;
+    display: none
+}
+
+#up.show {
+    display: block
+}
+
+#toast {
+    position: fixed;
+    left: 50%;
+    bottom: 2rem;
+    translate: -50% 0;
+    z-index: 600;
+    background: var(--a);
+    color: #fff;
+    font-family: var(--m);
+    padding: .7rem 1.6rem;
+    clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)
+}
+
+html.od {
+    animation: od .6s linear infinite
+}
+
+@keyframes od {
+    to {
+        filter: hue-rotate(360deg)
+    }
+}
+
+.od .glitch::before,
+.od .glitch::after {
+    animation-duration: .3s
+}
+
+@media(max-width:600px) {
+    .hud {
+        opacity: .25
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .hud circle,
+    html.od {
+        animation: none !important
+    }
+
+    #wipe {
+        display: none
+    }
+}

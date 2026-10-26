@@ -1,0 +1,473 @@
+:root {
+    --bg: #07050d;
+    --panel: rgba(20, 12, 34, .72);
+    --fg: #ece8f8;
+    --mut: #a79fc2;
+    --a: #ff2e63;
+    --b: #08f7fe;
+    --c: #ffd23f;
+    --line: rgba(8, 247, 254, .35);
+    --f: 'Chakra Petch', 'Segoe UI', system-ui, sans-serif;
+    --m: 'Share Tech Mono', ui-monospace, Consolas, monospace
+}
+
+[data-theme=light] {
+    --bg: #f3eef6;
+    --panel: rgba(255, 255, 255, .8);
+    --fg: #1a1228;
+    --mut: #5b4f74;
+    --a: #cf0f3d;
+    --b: #006f82;
+    --c: #a87400;
+    --line: rgba(0, 111, 130, .45)
+}
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 1.05rem/1.65 var(--f);
+    min-height: 100vh;
+    overflow-x: hidden
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .12) 0 1px, transparent 1px 3px);
+    opacity: .35
+}
+
+#bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%
+}
+
+a {
+    color: var(--b)
+}
+
+a:hover {
+    color: var(--a)
+}
+
+:focus-visible {
+    outline: 3px solid var(--c);
+    outline-offset: 3px
+}
+
+.skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--c);
+    color: #000;
+    padding: .5rem 1rem;
+    z-index: 200
+}
+
+.skip:focus {
+    left: 0
+}
+
+#prog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--a), var(--b));
+    z-index: 120;
+    box-shadow: 0 0 10px var(--a)
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem 1.2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: .7rem 1.2rem;
+    background: var(--panel);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line)
+}
+
+.logo {
+    font: 700 1.3rem var(--m);
+    color: var(--a);
+    text-decoration: none;
+    text-shadow: 0 0 12px var(--a)
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem
+}
+
+nav a {
+    color: var(--fg);
+    text-decoration: none;
+    padding: .3rem .9rem;
+    font-family: var(--m);
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    background: rgba(127, 127, 160, .15);
+    transition: .2s
+}
+
+nav a:hover,
+nav a[aria-current=page] {
+    background: var(--b);
+    color: #000
+}
+
+.ctl {
+    display: flex;
+    gap: .4rem
+}
+
+button,
+.btn {
+    font: inherit;
+    font-family: var(--m);
+    cursor: pointer;
+    color: var(--fg);
+    background: transparent;
+    border: 1px solid var(--b);
+    padding: .35rem .9rem;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition: .2s
+}
+
+button:hover,
+.btn:hover {
+    background: var(--b);
+    color: #000;
+    box-shadow: 0 0 18px var(--b)
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: .6rem 1.6rem;
+    border-color: var(--a)
+}
+
+.btn:hover {
+    background: var(--a);
+    box-shadow: 0 0 22px var(--a);
+    color: #fff
+}
+
+main {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 2.5rem 1.2rem 4rem
+}
+
+.hero {
+    min-height: 68vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .4rem
+}
+
+.tag {
+    font-family: var(--m);
+    color: var(--c);
+    margin: 0
+}
+
+.glitch {
+    font: 700 clamp(2.6rem, 10vw, 6rem)/1 var(--f);
+    margin: .2rem 0;
+    position: relative;
+    text-shadow: 0 0 25px var(--a);
+    letter-spacing: -.02em
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden
+}
+
+.glitch::before {
+    color: var(--b);
+    animation: gl 2.6s infinite steps(1);
+    clip-path: inset(0 0 55% 0);
+    text-shadow: none
+}
+
+.glitch::after {
+    color: var(--a);
+    animation: gl 3.1s infinite steps(1) reverse;
+    clip-path: inset(55% 0 0 0);
+    text-shadow: none
+}
+
+@keyframes gl {
+
+    0%,
+    86%,
+    100% {
+        transform: none
+    }
+
+    88% {
+        transform: translate(-5px, 2px)
+    }
+
+    92% {
+        transform: translate(6px, -2px)
+    }
+
+    96% {
+        transform: translate(-3px, 0)
+    }
+}
+
+h2 {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    margin: .3rem 0;
+    color: var(--b)
+}
+
+h3 {
+    margin: .2rem 0;
+    color: var(--a)
+}
+
+.type {
+    font-family: var(--m);
+    color: var(--c);
+    min-height: 1.7em
+}
+
+.type::after {
+    content: "█";
+    animation: bl 1s steps(1) infinite
+}
+
+@keyframes bl {
+    50% {
+        opacity: 0
+    }
+}
+
+.lead {
+    max-width: 62ch
+}
+
+.grid {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin: 2rem 0
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 1.3rem;
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+    transition: transform .15s, border-color .2s, box-shadow .2s
+}
+
+.card:hover {
+    border-color: var(--a)
+}
+
+.card.soon {
+    border-style: dashed
+}
+
+.chips {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem
+}
+
+.chips li {
+    font-family: var(--m);
+    padding: .25rem .8rem;
+    border: 1px solid var(--b);
+    color: var(--b)
+}
+
+.lvl {
+    display: inline-block;
+    font-family: var(--m);
+    color: #000;
+    background: var(--c);
+    padding: .2rem 1rem;
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)
+}
+
+.rv {
+    opacity: 0;
+    transform: translateY(30px) skewY(1deg);
+    transition: opacity .7s, transform .7s
+}
+
+.rv.in {
+    opacity: 1;
+    transform: none
+}
+
+.win {
+    background: #05030a;
+    color: #9dffb0;
+    border: 1px solid var(--b);
+    box-shadow: 0 0 30px rgba(8, 247, 254, .25);
+    font-family: var(--m);
+    margin-top: 1.5rem
+}
+
+.win .bar {
+    background: var(--b);
+    color: #000;
+    padding: .2rem .8rem;
+    font-size: .9rem
+}
+
+#out {
+    height: 52vh;
+    overflow: auto;
+    padding: 1rem;
+    white-space: pre-wrap;
+    word-break: break-word
+}
+
+#out .u {
+    color: var(--c)
+}
+
+#out .e {
+    color: var(--a)
+}
+
+.row {
+    display: flex;
+    gap: .5rem;
+    padding: 0 1rem 1rem;
+    color: var(--c)
+}
+
+#cmd {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--b);
+    color: #fff;
+    font: inherit
+}
+
+#cmd:focus-visible {
+    outline: 0;
+    border-color: var(--c)
+}
+
+footer {
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    color: var(--mut);
+    font-family: var(--m)
+}
+
+.social {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-bottom: .6rem
+}
+
+#boot {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: #05030a;
+    color: #9dffb0;
+    font-family: var(--m);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vw;
+    transition: opacity .6s
+}
+
+#boot.out {
+    opacity: 0;
+    pointer-events: none
+}
+
+#boot pre {
+    margin: 0 0 1rem;
+    white-space: pre-wrap
+}
+
+#bar {
+    height: 8px;
+    width: 100%;
+    border: 1px solid var(--b)
+}
+
+#bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--a), var(--b));
+    box-shadow: 0 0 12px var(--a)
+}
+
+@media(max-width:600px) {
+    header {
+        justify-content: center
+    }
+
+    .hero {
+        min-height: 60vh
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
+    }
+
+    .rv {
+        opacity: 1;
+        transform: none
+    }
+}

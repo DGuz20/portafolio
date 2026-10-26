@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DGuz20</title>
+    <meta name="description" content="Portafolio de Gustavo / DGuz20: desarrollo web, CTF y Linux.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/extra.css">
+    <meta name="theme-color" content="#07050d">
+    <meta property="og:title" content="DGuz20 · Portafolio">
+    <meta property="og:description" content="Desarrollo web · CTF · Linux">
+    <meta property="og:type" content="website">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307050d'/%3E%3Cpath d='M12 12h24l16 20-16 20H12z' fill='none' stroke='%23ff2e63' stroke-width='6'/%3E%3C/svg%3E">
+</head>
+
+<body data-page="terminal">
+    <a class="skip" href="#main" data-i18n="skip"></a>
+    <div id="prog"></div><canvas id="bg" aria-hidden="true"></canvas>
+    <header><a class="logo" href="index.html">DGuz20_</a>
+        <nav aria-label="Menu"><a href="index.html" data-i18n="nav.index"></a><a href="about.html"
+                data-i18n="nav.about"></a><a href="projects.html" data-i18n="nav.projects"></a><a href="terminal.html"
+                data-i18n="nav.terminal" aria-current="page"></a></nav>
+        <div class="ctl"><button id="lg" type="button" aria-label="Language / Idioma"></button><button id="th"
+                type="button" aria-label="Theme / Tema"></button><button id="ac" type="button"
+                aria-label="Accent color / Color de acento"></button><button id="sn" type="button"
+                aria-label="Sound / Sonido"></button></div>
+    </header>
+    <main id="main">
+        <h1 class="glitch" data-text="Terminal" data-i18n="term.title"></h1>
+        <div class="win">
+            <div class="bar">dguz20@sync:~</div>
+            <div id="out" role="log" aria-live="polite"></div>
+            <div class="row"><label for="cmd">$</label><input id="cmd" autocomplete="off" spellcheck="false"
+                    aria-label="Terminal"></div>
+        </div>
+    </main>
+    <footer>
+        <div class="social">
+            <a href="https://github.com/DGuz20" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://tryhackme.com/p/DarkGz" target="_blank" rel="noopener">TryHackMe</a>
+            <a href="https://www.facebook.com/darielgustavo.sanchezhernandez/" target="_blank"
+                rel="noopener">Facebook</a>
+            <a href="https://www.instagram.com/0614.gus/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <span data-i18n="foot"></span>
+    </footer>
+    <button id="up" type="button" aria-label="Arriba / Top">▲</button>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/extra.js"></script>
+</body>
+
+</html>
